@@ -1,0 +1,17 @@
+/* Global CSS reset & base — handled via Emotion GlobalStyle in ThemeProvider */
+/* This file exists as a lightweight fallback entry for non-JS environments */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Geist", "Inter", system-ui, sans-serif;
+  background: transparent;
+  color: #171717;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

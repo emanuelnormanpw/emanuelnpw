@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "baseUrl": "src",
+    "paths": {
+      "@assets": ["assets"],
+      "@elements": ["elements/index.ts"],
+      "@elements/*": ["elements/*"],
+      "@layouts": ["components/layouts/index.ts"],
+      "@layouts/*": ["components/layouts/*"],
+      "@modules": ["components/modules/index.ts"],
+      "@modules/*": ["components/modules/*"],
+      "@shapes": ["components/shapes/index.ts"],
+      "@shapes/*": ["components/shapes/*"],
+      "@hooks": ["hooks/index.ts"],
+      "@hooks/*": ["hooks/*"],
+      "@styles": ["styles/index.ts"],
+      "@styles/*": ["styles/*"],
+      "@utils": ["utils/index.ts"],
+      "@utils/*": ["utils/*"],
+      "@constants": ["constants/index.ts"],
+      "@constants/*": ["constants/*"]
+    },
+    "lib": ["WebWorker", "dom", "dom.iterable", "esnext"],
+
+    /* Bundler mode */
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": false,
+    "noEmit": true,
+    "downlevelIteration": true,
+    "types": ["@emotion/react/types/css-prop", "node"],
+
+    /* Linting */
+    "noFallthroughCasesInSwitch": true,
+
+    /* Extends */
+    "target": "ES2022",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
