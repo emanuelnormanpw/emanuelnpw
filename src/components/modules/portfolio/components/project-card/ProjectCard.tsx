@@ -11,7 +11,13 @@ const ProjectCard = (props: ProjectCardProps) => {
         <img
           className="project-media-placeholder"
           src={item.image}
+          srcSet={item.imageSrcSet}
+          sizes="(min-width: 64rem) 24rem, (min-width: 48rem) 50vw, calc(100vw - 3rem)"
+          width={800}
+          height={450}
           alt={`${item.category}: ${item.title}`}
+          loading="lazy"
+          decoding="async"
         />
         <div className="project-badge">
           <Badge variant="light">{item.category}</Badge>

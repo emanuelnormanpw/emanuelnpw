@@ -4,6 +4,7 @@
     "baseUrl": "src",
     "paths": {
       "@assets": ["assets"],
+      "@assets/*": ["assets/*"],
       "@elements": ["elements/index.ts"],
       "@elements/*": ["elements/*"],
       "@layouts": ["components/layouts/index.ts"],

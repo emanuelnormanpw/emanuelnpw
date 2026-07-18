@@ -300,9 +300,13 @@ export const heroSectionCx = css`
   }
 
   .decorative-strip-item {
+    width: 100%;
+    height: auto;
     aspect-ratio: 1;
     border-radius: 0.75rem;
     border: 0.0625rem solid rgba(255, 255, 255, 0.08);
+    display: block;
+    object-fit: cover;
   }
 
   .decorative-strip-item:nth-of-type(1) {

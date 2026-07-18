@@ -45,10 +45,14 @@ const AboutPhotoCarousel = (props: AboutPhotoCarouselProps) => {
               <img
                 className="about-photo"
                 src={photo.src}
+                srcSet={photo.srcSet}
+                sizes="(min-width: 48rem) 33vw, calc(100vw - 5rem)"
+                width={640}
+                height={360}
                 alt={photo.alt}
                 decoding="async"
                 draggable={false}
-                loading={photoIndex > photos.length ? "lazy" : "eager"}
+                loading="lazy"
               />
               {photoIndex === activeTrackIndex && photo.href ? (
                 <a
@@ -57,7 +61,7 @@ const AboutPhotoCarousel = (props: AboutPhotoCarouselProps) => {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  URL
+                  OPEN LINK
                 </a>
               ) : null}
             </div>

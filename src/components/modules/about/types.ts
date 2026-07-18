@@ -2,6 +2,7 @@ import type { TransitionEvent } from "react";
 
 export interface AboutPhoto {
   src: string;
+  srcSet?: string;
   alt: string;
   title: string;
   href?: string;

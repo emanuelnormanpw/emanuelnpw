@@ -1,4 +1,6 @@
-import photography from "@assets/about-carousel/photography.jpg";
+import photography1200 from "@assets/optimized-img/about/photography-1200.webp";
+import photography1600 from "@assets/optimized-img/about/photography-1600.webp";
+import photography640 from "@assets/optimized-img/about/photography-640.webp";
 
 import { AboutPhotoCarousel } from "./components/about-photo-carousel";
 
@@ -17,7 +19,17 @@ const About = () => {
         </div>
 
         <div className="about-grid">
-          <img className="about-image" src={photography} alt="" />
+          <img
+            className="about-image"
+            src={photography640}
+            srcSet={`${photography640} 640w, ${photography1200} 1200w, ${photography1600} 1600w`}
+            sizes="(min-width: 80rem) 73.6rem, calc(100vw - 9rem)"
+            width={1600}
+            height={932}
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
           <div className="about-content">
             <h2 id="about-heading" className="about-heading">
               &ldquo;To see the world, things dangerous to come to, to see

@@ -4,6 +4,7 @@ export interface PortfolioItem {
   date: string;
   title: string;
   image: string;
+  imageSrcSet: string;
   description: string;
   href?: string;
   featured?: boolean;

@@ -301,7 +301,7 @@ export const aboutSectionCx = css`
 
   .about-carousel-link {
     position: absolute;
-    top: 50%;
+    bottom: 0;
     left: 50%;
     z-index: 1;
     border: 0.0625rem solid rgba(255, 255, 255, 0.16);

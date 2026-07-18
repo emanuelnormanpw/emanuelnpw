@@ -1,7 +1,12 @@
-import meImg from "@assets/compressed_me.webp";
-import projectCompA from "@assets/projects/project-comp-1.webp";
-import projectCompB from "@assets/projects/project-comp-2.webp";
-import projectCompC from "@assets/projects/project-comp-3.webp";
+import meImg1200 from "@assets/optimized-img/hero/me-1200.webp";
+import meImg480 from "@assets/optimized-img/hero/me-480.webp";
+import meImg720 from "@assets/optimized-img/hero/me-720.webp";
+import projectCompA240 from "@assets/optimized-img/decorative/project-comp-1-240.webp";
+import projectCompA480 from "@assets/optimized-img/decorative/project-comp-1-480.webp";
+import projectCompB240 from "@assets/optimized-img/decorative/project-comp-2-240.webp";
+import projectCompB480 from "@assets/optimized-img/decorative/project-comp-2-480.webp";
+import projectCompC240 from "@assets/optimized-img/decorative/project-comp-3-240.webp";
+import projectCompC480 from "@assets/optimized-img/decorative/project-comp-3-480.webp";
 
 import { Badge } from "@elements/badge";
 import { ArrowRight } from "@shapes/arrow-right";
@@ -22,7 +27,16 @@ const Hero = () => {
             {/* Left: Featured image + Selected Work label */}
             <div className="hero-left">
               <div className="hero-featured">
-                <img src={meImg} alt="Emanuel Norman Putera Wardhana" />
+                <img
+                  src={meImg720}
+                  srcSet={`${meImg480} 480w, ${meImg720} 720w, ${meImg1200} 1200w`}
+                  sizes="(min-width: 64rem) 50vw, calc(100vw - 9rem)"
+                  width={1200}
+                  height={1200}
+                  alt="Emanuel Norman Putera Wardhana"
+                  fetchPriority="high"
+                  decoding="async"
+                />
                 <div className="hero-featured-overlay">
                   <p className="hero-featured-label">Tech Stacks</p>
                   <h2 className="hero-featured-title">
@@ -54,9 +68,6 @@ const Hero = () => {
                       </span>
                     </span>
                   </h2>
-                  <a href="#portfolio" className="hero-featured-cta">
-                    View Work <ArrowRight />
-                  </a>
                 </div>
               </div>
             </div>
@@ -83,19 +94,37 @@ const Hero = () => {
 
               <div className="decorative-strip" aria-hidden="true">
                 <img
-                  src={projectCompA}
+                  src={projectCompA240}
+                  srcSet={`${projectCompA240} 240w, ${projectCompA480} 480w`}
+                  sizes="(min-width: 64rem) 8rem, 30vw"
+                  width={480}
+                  height={480}
                   className="decorative-strip-item"
-                  alt="Project Component 1"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
                 />
                 <img
-                  src={projectCompB}
+                  src={projectCompB240}
+                  srcSet={`${projectCompB240} 240w, ${projectCompB480} 480w`}
+                  sizes="(min-width: 64rem) 8rem, 30vw"
+                  width={480}
+                  height={480}
                   className="decorative-strip-item"
-                  alt="Project Component 2"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
                 />
                 <img
-                  src={projectCompC}
+                  src={projectCompC240}
+                  srcSet={`${projectCompC240} 240w, ${projectCompC480} 480w`}
+                  sizes="(min-width: 64rem) 8rem, 30vw"
+                  width={480}
+                  height={480}
                   className="decorative-strip-item"
-                  alt="Project Component 3"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 

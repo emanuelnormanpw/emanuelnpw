@@ -1,8 +1,6 @@
-import loadable from "@loadable/component";
-
-const Hero = loadable(() => import("../hero/Hero"));
-const Portfolio = loadable(() => import("../portfolio/Portfolio"));
-const About = loadable(() => import("../about/About"));
+import { About } from "../about";
+import { Hero } from "../hero";
+import { Portfolio } from "../portfolio";
 
 const Home = () => {
   return (

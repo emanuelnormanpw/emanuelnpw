@@ -20,6 +20,9 @@ const NavBar = (props: NavBarProps) => {
               </a>
             </li>
           ))}
+          <li>
+            <span className="nav-link">(Coming Soon)</span>
+          </li>
         </ul>
 
         <div className="nav-cta">

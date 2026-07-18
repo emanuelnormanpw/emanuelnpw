@@ -6,7 +6,7 @@ export const pageShellCx = css`
   min-height: 100dvh;
   background: transparent;
   color: ${COLORS.textPrimary};
-  font-family: "Geist", "Inter", system-ui, sans-serif;
+  font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;

@@ -27,14 +27,21 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-    <!-- Preconnect to font origin for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Geist via Google Fonts CDN (closest available match) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="image"
+      href="/src/assets/optimized-img/hero/me-1200.webp"
+      type="image/webp"
+      fetchpriority="high"
+    />
+
+    <!-- Self-hosted font avoids a render-blocking third-party stylesheet. -->
+    <link
+      rel="preload"
+      href="/src/assets/fonts/inter-latin-300-600.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
     />
 
     <!-- Theme color for mobile browsers -->
