@@ -314,3 +314,50 @@ Notes:
      }
    }
    ```
+
+---
+
+## Lighthouse Performance Guardrails
+
+### Performance Regression Rules
+
+1. Do not reintroduce asynchronous loading for the Hero, Portfolio, or About
+   sections without a layout-stable fallback. Rendering an empty fallback can
+   make the footer appear early and cause a large layout shift.
+2. Keep the hero/LCP image eager, preloaded, and marked with
+   `fetchPriority="high"`. Do not apply `loading="lazy"` to the LCP image.
+3. Every content image must declare intrinsic `width` and `height`. Responsive
+   images must use an appropriate `srcSet` and `sizes`.
+4. Images below the fold, including portfolio and carousel images, must use
+   `loading="lazy"` and `decoding="async"` unless measurement proves that eager
+   loading is required.
+5. Keep image source masters separate from generated delivery assets. Browser
+   imports must use files under `src/assets/optimized-img`, not the large master
+   images.
+6. Regenerate responsive image variants after changing a master image:
+
+   ```bash
+   npm run optimize:images
+   ```
+
+7. Do not restore the Spline iframe or other heavy third-party visual runtime
+   without measuring its payload, main-thread cost, cookie issues, and effect
+   on Best Practices. Prefer CSS-native decorative backgrounds.
+8. Keep Inter self-hosted. Do not add a render-blocking Google Fonts stylesheet
+   unless there is a measured requirement and an equivalent non-blocking
+   strategy.
+9. Preserve the Emotion `jsxImportSource` Vite configuration. Production builds
+   must be visually inspected because a build can compile successfully while
+   Emotion `css` props remain unprocessed.
+10. Performance work must not remove or weaken semantic landmarks, headings,
+    alt text, accessible names, keyboard focus behavior, reduced-motion
+    handling, or indexable content.
+
+### Required Verification
+
+Before completing a performance-sensitive change, run:
+
+```bash
+npm run lint
+npm run build
+```

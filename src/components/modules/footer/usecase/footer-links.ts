@@ -1,6 +1,7 @@
 import type { FooterLink } from "../types";
 
 export const NAV_LINKS: FooterLink[] = [
+  { label: "Experience", href: "#experience" },
   { label: "Portofolio", href: "#portfolio" },
   { label: "About", href: "#about" },
 ];

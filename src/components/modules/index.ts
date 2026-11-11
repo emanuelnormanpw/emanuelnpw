@@ -1,5 +1,6 @@
 export * from "./nav-bar";
 export * from "./hero";
+export * from "./experience";
 export * from "./portfolio";
 export * from "./about";
 export * from "./testimonials";

@@ -1,15 +1,16 @@
 ---
-version: "portfolio-website-emotion-rem-v1"
-name: "Portfolio Website"
-description: "A general editorial portfolio website design guideline for photographers, designers, creative studios, and personal brands. The system is built for Emotion CSS-in-JS instead of Tailwind, with reusable design tokens, calm visual hierarchy, rounded editorial cards, image-first composition, and responsive portfolio sections."
+version: "emanuelnpw-portfolio-v2"
+name: "emanuelnpw Portfolio"
+description: "The current design system for the emanuelnpw portfolio: a monochrome, image-led interface composed from rounded dark editorial panels over a soft neutral canvas."
+status: "Current implementation is the source of truth."
 implementation:
+  framework: "React and TypeScript"
   styling: "Emotion CSS-in-JS"
-  avoid: "Tailwind utility classes"
-  recommendedPackage: "@emotion/react and @emotion/styled"
+  font: "Self-hosted Inter variable subset"
+  avoid: "Tailwind utility classes and inline style props"
 units:
   css: "rem"
   base: "1rem equals 16 CSS pixels"
-  rule: "Use rem for CSS length units in tokens, examples, and component styles. Avoid px in implementation."
 colors:
   primary: "#171717"
   secondary: "#FFFFFF"
@@ -26,522 +27,414 @@ colors:
   border-dark: "rgba(255,255,255,0.12)"
   overlay-dark: "rgba(23,23,23,0.9)"
   overlay-light: "rgba(255,255,255,0.9)"
-typography:
-  display-xl:
-    fontFamily: "Geist, Inter, system-ui, sans-serif"
-    fontSize: "clamp(4rem, 12vw, 9rem)"
-    fontWeight: 300
-    lineHeight: "0.9"
-    letterSpacing: "-0.06em"
-  display-lg:
-    fontFamily: "Geist, Inter, system-ui, sans-serif"
-    fontSize: "clamp(2.5rem, 6vw, 5rem)"
-    fontWeight: 300
-    lineHeight: "1.05"
-    letterSpacing: "-0.045em"
-  heading-md:
-    fontFamily: "Geist, Inter, system-ui, sans-serif"
-    fontSize: "1.5rem"
-    fontWeight: 400
-    lineHeight: "1.2"
-    letterSpacing: "-0.03em"
-  heading-sm:
-    fontFamily: "Geist, Inter, system-ui, sans-serif"
-    fontSize: "1.125rem"
-    fontWeight: 600
-    lineHeight: "1.35"
-    letterSpacing: "-0.02em"
-  body-md:
-    fontFamily: "Geist, Inter, system-ui, sans-serif"
-    fontSize: "1rem"
-    fontWeight: 400
-    lineHeight: "1.6"
-    letterSpacing: "0"
-  body-sm:
-    fontFamily: "Geist, Inter, system-ui, sans-serif"
-    fontSize: "0.875rem"
-    fontWeight: 400
-    lineHeight: "1.55"
-    letterSpacing: "0"
-  label-md:
-    fontFamily: "Geist, Inter, system-ui, sans-serif"
-    fontSize: "0.75rem"
-    fontWeight: 500
-    lineHeight: "1.2"
-    letterSpacing: "0.08em"
 spacing:
-  base: "0.5rem"
   xs: "0.25rem"
   sm: "0.5rem"
   md: "1rem"
   lg: "1.5rem"
   xl: "2rem"
-  2xl: "3rem"
-  3xl: "4rem"
-  section-padding-mobile: "1.5rem"
-  section-padding-desktop: "3rem"
-  card-padding: "1.5rem"
-  container-padding-mobile: "1rem"
-  container-padding-desktop: "1.5rem"
-  max-width: "80rem"
+  xxl: "3rem"
+  section: "4rem"
 rounded:
   section: "1.5rem"
   card: "1.5rem"
   media: "1rem"
   control: "0.75rem"
   pill: "624.9375rem"
-shadow:
-  card: "0 0.0625rem 0.125rem rgba(0,0,0,0.04)"
-  floating: "0 0.75rem 2.25rem rgba(0,0,0,0.12)"
-  image: "0 0.5rem 1.5rem rgba(0,0,0,0.14)"
 breakpoints:
-  mobile: "0rem"
   tablet: "48rem"
   desktop: "64rem"
   wide: "80rem"
-components:
-  page:
-    background: "Use background token as the global canvas and place white rounded sections above it."
-    maxWidth: "Use the max-width token with centered layout."
-  navbar:
-    background: "Use surface-dark with inverse text."
-    radius: "Use section radius."
-    position: "Sticky top navigation with compact vertical spacing."
-  hero:
-    typography: "Use display-xl with thin weight and tight letter spacing."
-    structure: "Large editorial wordmark/title followed by image-first portfolio composition."
-  carousel:
-    background: "Use muted surface behind media."
-    height: "Use 26.25rem on mobile and 37.5rem on desktop."
-    controls: "Use dark translucent square buttons with control radius."
-  card:
-    background: "Use surface or surface-muted with subtle border."
-    radius: "Use card radius outside and media radius inside."
-    border: "0.0625rem solid border token."
-  projectCard:
-    media: "Image-first card with object-fit cover, category pill, and optional bottom gradient overlay."
-    text: "Keep title short, calm, and editorial."
-  button:
-    primary: "Dark background, white text, rounded control radius."
-    secondary: "Muted background, dark text, border token."
-    pill: "Use pill radius for filter buttons, category chips, and view-all actions."
-  badge:
-    background: "Use translucent white over image or dark solid for featured labels."
-    radius: "Use pill radius."
-  pricingCard:
-    structure: "White card with small label, light heading, dark price strip, feature list, and full-width CTA."
-  footer:
-    background: "Use surface-dark."
-    text: "Use inverse text with muted opacity for secondary copy."
+layout:
+  max-width: "80rem"
+  hero-desktop-columns: "2fr 1fr"
+  portfolio-desktop-columns: "repeat(3, 1fr)"
 ---
 
-# Portfolio Website
+# emanuelnpw Portfolio Design System
 
-Source reference: Generated portfolio HTML inspected from the uploaded page. The naming has been generalized into a reusable portfolio website system, not tied to any specific personal name, studio name, or template name.
+## Purpose
 
-Tags: portfolio, editorial, photography, creative-studio, image-grid, personal-brand, emotion-css.
+This document describes the visual system that is currently implemented in the
+portfolio. It is the reference for future visual changes and should be updated
+when the shipped design changes.
 
-## Overview
+The design is monochrome, image-led, rounded, and deliberately compact. A soft
+neutral page canvas supports a sequence of near-black editorial panels. White
+and muted-white typography, restrained borders, photography, and small pill
+controls create the hierarchy.
 
-Portfolio Website is a minimal, editorial, image-first design system for showcasing selected work, services, testimonials, personal profile, and contact information. The visual direction should feel calm, premium, spacious, and intentional.
+This is not a generic light portfolio template. The dark panel system, bold
+hero title, project imagery, and personal photography are the recognizable
+parts of the current design.
 
-The design should prioritize strong imagery, restrained typography, soft neutral colors, rounded cards, and clear section rhythm. It is suitable for photographers, designers, creative studios, freelancers, personal brands, or any professional portfolio that needs a refined presentation.
+## Current Page Composition
 
-This guideline is intended for implementation with Emotion CSS-in-JS. Do not translate the design into Tailwind utility classes. Instead, convert the visual rules into theme tokens, styled components, and reusable style objects.
+The active page follows this order:
 
-## Unit System
+1. Ambient animated background behind all content.
+2. Compact navigation with brand, anchor links, and a `Download CV` action.
+3. Hero panel containing a bold title, featured project, profile card,
+   decorative image strip, and social links.
+4. Portfolio panel containing an equal responsive grid of project cards.
+5. About panel containing a wide image, personal copy, and photo carousel.
+6. Footer panel containing brand, contact details, menu links, social links,
+   copyright, and a small cultural signature.
 
-Use `rem` as the default CSS length unit across the design system. The base conversion is `1rem` equals 16 CSS pixels. Avoid `px` in design tokens, component examples, layout rules, border widths, shadows, breakpoints, and documentation examples.
+`Testimonials` and `Services` exist in the codebase but are not rendered on the
+current home page. They are dormant components and must not be treated as part
+of the active composition unless they are deliberately restored.
 
-Use this conversion pattern when translating measurements from visual references:
+The current footer does not contain a newsletter form.
 
-- `0.0625rem` for very thin borders.
-- `0.25rem`, `0.5rem`, `1rem`, `1.5rem`, `2rem`, `3rem`, and `4rem` for the main spacing scale.
-- `48rem`, `64rem`, and `80rem` for tablet, desktop, and wide breakpoints.
+## Visual Direction
 
-## Composition
+The interface should feel:
 
-Use the uploaded HTML reference as the source of truth for visual hierarchy, section rhythm, spacing density, and component geometry. Preserve the first-screen composition: a compact dark navigation, a large editorial title, a dominant featured work area, and a supporting profile/contact column.
+- Personal rather than corporate.
+- Bold in the first viewport and restrained everywhere else.
+- Premium through spacing, typography, photography, and material contrast
+  rather than decoration.
+- Dark and immersive inside each main section while retaining a light neutral
+  page canvas around those sections.
+- Responsive without changing the content hierarchy.
 
-The page should generally follow this structure:
+Avoid introducing bright brand colors, glossy gradients inside content cards,
+generic SaaS patterns, excessive shadows, or large blocks of explanatory copy.
 
-1. Sticky dark navigation inside a rounded container.
-2. Large editorial hero title with thin font weight and tight tracking.
-3. Featured portfolio area with carousel or large project media on the left.
-4. Profile, visual preview, and contact/social links on the right.
-5. Latest work section using a responsive grid with one featured card and smaller cards.
-6. About section with large image, biography text, and supporting stats/cards.
-7. Testimonial or social proof section using dark background and decorative floating images.
-8. Services or pricing section with clean package cards.
-9. Footer with brand title, contact info, newsletter input, and navigation links.
+## Color and Surface System
 
-Keep the page image-led. Text supports the work; it should not dominate the layout except in hero, section headings, testimonials, and footer brand moments.
+The global canvas uses `background` (`#F5F5F5`), although the ambient background
+may visually alter the area around panels. The primary visual surfaces are
+rounded `surface-dark` (`#171717`) panels.
 
-## Colors
+Use the color roles as follows:
 
-Anchor the palette in neutral monochrome colors. The overall canvas uses a soft grey background, while major content sections use white rounded panels. Dark sections use near-black surfaces to create contrast and premium editorial moments.
+- `surface-dark`: navigation, hero, portfolio, about, and footer panels.
+- `surface` and `surface-muted`: light media fallbacks or components that need
+  contrast against the canvas.
+- `text-inverse`: primary headings and important text on dark panels.
+- Muted white with controlled alpha: labels, metadata, descriptions, and
+  inactive links on dark panels.
+- `border-dark`: subtle separation for cards and controls on dark panels.
+- `overlay-dark`: lower image gradients used to keep text readable.
+- `overlay-light`: badges placed over photography.
 
-Core color roles:
-
-- `background`: global page canvas, soft neutral grey.
-- `surface`: primary white card and section background.
-- `surface-muted`: subtle card background for project cards and secondary panels.
-- `surface-dark`: navigation, CTA, testimonial, service, and footer background.
-- `text-primary`: main headings and strong body text.
-- `text-secondary`: paragraph text and descriptions.
-- `text-muted`: metadata, labels, section counters, inactive nav links.
-- `text-inverse`: text on dark backgrounds.
-- `border`: subtle light border for cards and controls.
-- `overlay-dark`: image gradient overlays.
-- `overlay-light`: white glass labels and image CTAs.
-
-Avoid colorful accents unless the portfolio brand specifically requires it. If an accent is needed, use it sparingly for active states, tags, or selected filters, but keep the base system neutral.
+The dominant experience is dark-panel-led. Do not convert Hero, Portfolio, or
+About into white section panels without a deliberate redesign.
 
 ## Typography
 
-Use a modern grotesk sans-serif such as Geist, Inter, or a system sans-serif fallback. The typography should feel editorial, quiet, and premium.
+The shipped typeface is self-hosted `Inter`, with `system-ui` and `sans-serif`
+as fallbacks. Keep the font self-hosted to avoid a render-blocking third-party
+font request.
 
-Display headings should use thin to regular font weights, tight letter spacing, and large responsive sizes. Body text should be readable, restrained, and not overly bold.
+The typography has two distinct modes:
 
-Recommended hierarchy:
+- Hero: bold, immediate, and compact.
+- Supporting content: light-to-regular editorial headings with restrained body
+  copy.
 
-- `display-xl`: hero wordmark/title, footer brand title.
-- `display-lg`: section headings and testimonial headline.
-- `heading-md`: pricing card titles, profile title, major card headings.
-- `heading-sm`: project card title, link title, small card title.
-- `body-md`: about copy and main descriptions.
-- `body-sm`: cards, profile description, service features.
-- `label-md`: section labels, counters, dates, badges, metadata.
+### Current hierarchy
 
-Use uppercase labels only for section markers, metadata, and small supporting text. Do not overuse uppercase for paragraph content.
+| Role | Current treatment |
+| --- | --- |
+| Hero title | `clamp(2rem, 11vw, 6rem)`, weight `800`, inverse color |
+| Footer brand | `clamp(2rem, 5vw, 3.5rem)`, weight `300`, tight tracking |
+| About tagline | `clamp(1.5rem, 4vw, 2.5rem)`, weight `300` |
+| Section heading | Responsive `1.25rem`–`1.75rem`, weight `300` or `400` |
+| Card title | `1rem`–`1.125rem`, weight `600` |
+| Body | `0.875rem`–`0.9375rem`, regular, generous line height |
+| Label | `0.75rem`, medium, uppercase, wide tracking |
 
-## Emotion Theme Tokens
+The hero must not be changed back to a thin oversized wordmark unless the whole
+first-screen composition is intentionally redesigned.
 
-Use a single theme object and consume it through Emotion's `ThemeProvider`. Keep tokens semantic so components are easy to reuse and redesign later.
-
-```ts
-export const portfolioTheme = {
-  colors: {
-    primary: "#171717",
-    secondary: "#FFFFFF",
-    accent: "#A3A3A3",
-    background: "#F5F5F5",
-    surface: "#FFFFFF",
-    surfaceMuted: "#FAFAFA",
-    surfaceDark: "#171717",
-    textPrimary: "#171717",
-    textSecondary: "#525252",
-    textMuted: "#737373",
-    textInverse: "#FFFFFF",
-    border: "#E5E5E5",
-    borderDark: "rgba(255,255,255,0.12)",
-    overlayDark: "rgba(23,23,23,0.9)",
-    overlayLight: "rgba(255,255,255,0.9)",
-  },
-  fonts: {
-    sans: "Geist, Inter, system-ui, sans-serif",
-  },
-  spacing: {
-    xs: "0.25rem",
-    sm: "0.5rem",
-    md: "1rem",
-    lg: "1.5rem",
-    xl: "2rem",
-    xxl: "3rem",
-    section: "4rem",
-  },
-  radii: {
-    section: "1.5rem",
-    card: "1.5rem",
-    media: "1rem",
-    control: "0.75rem",
-    pill: "624.9375rem",
-  },
-  shadows: {
-    card: "0 0.0625rem 0.125rem rgba(0,0,0,0.04)",
-    floating: "0 0.75rem 2.25rem rgba(0,0,0,0.12)",
-    image: "0 0.5rem 1.5rem rgba(0,0,0,0.14)",
-  },
-  breakpoints: {
-    tablet: "48rem",
-    desktop: "64rem",
-    wide: "80rem",
-  },
-  transitions: {
-    base: "180ms ease",
-    slow: "500ms ease-out",
-  },
-} as const;
-```
+Use uppercase only for small labels, metadata, controls, and section markers.
+Maintain readable contrast when using muted white text.
 
 ## Layout
 
-Use a centered max-width container with responsive horizontal padding. Recommended maximum width is `80rem`. The global page should use a soft neutral background, while each major section appears as a rounded white or dark container.
+Use a centered container with a maximum width of `80rem`. Major sections receive
+responsive outer padding so the canvas remains visible around their rounded
+panels.
 
-Layout principles:
+### Responsive behavior
 
-- Use generous rounded section wrappers.
-- Keep vertical section spacing consistent, usually `2rem` between major sections.
-- Use `1.5rem` internal padding for sections on desktop and `1rem` on mobile.
-- Prefer CSS Grid for page composition and portfolio cards.
-- Use a one-column stack on mobile.
-- Use 3-column grids on desktop for portfolio, services, and supporting cards.
-- Use a 2/3 + 1/3 split for hero portfolio composition on desktop.
-- Keep image heights stable to preserve editorial rhythm.
+- Mobile: one-column content flow.
+- Tablet (`48rem`): increased outer and inner spacing; portfolio becomes two
+  columns; the About carousel shows three frames.
+- Desktop (`64rem`): Hero uses a `2fr 1fr` split; portfolio becomes three
+  columns; Footer changes from a vertical stack to a horizontal composition.
+- Wide (`80rem`): content remains centered at the maximum width.
+- Very small screens: reduce radius, font size, and horizontal padding without
+  hiding content.
 
-Recommended responsive pattern:
+Use CSS Grid for repeated card layouts and Flexbox for content groups. Preserve
+explicit image aspect ratios to prevent layout shifts.
 
-```ts
-const containerStyle = (theme: Theme) =>
-  css({
-    maxWidth: "80rem",
-    margin: "0 auto",
-    padding: `0 ${theme.spacing.md}`,
-    [media(theme.breakpoints.tablet)]: {
-      padding: `0 ${theme.spacing.lg}`,
-    },
-  });
+## Section Geometry
+
+Main panels use:
+
+- `1.5rem` section radius.
+- Near-black background.
+- `1.5rem` to `3rem` responsive inner padding.
+- Approximately `1.5rem` to `2rem` separation from adjacent panels.
+- Subtle translucent borders for nested cards.
+
+Nested cards use a `1.5rem` radius. Media usually uses a slightly smaller inner
+radius. Pill controls use the shared pill radius.
+
+Shadows are secondary to borders and surface contrast. Use the floating shadow
+only for a meaningful hover or elevated state.
+
+## Navigation
+
+Navigation is compact and calm. It provides:
+
+- The personal brand.
+- Anchor navigation to page sections.
+- A literal `Download CV` action using the existing CV asset.
+
+Links should remain visible, keyboard accessible, and visually consistent with
+the dark editorial system. The navigation must not become a large marketing
+header or obscure the first-screen composition.
+
+## Hero
+
+The Hero is the strongest visual moment.
+
+### Structure
+
+- A rounded dark outer panel.
+- Bold inverse title at the top.
+- One-column composition on mobile.
+- `2fr 1fr` content grid on desktop.
+- Featured project media on the left.
+- Profile card, decorative image strip, and social links on the right.
+
+The featured media uses a stable `4 / 3` mobile aspect ratio and a taller
+desktop treatment capped at `37.5rem`. Its content includes a category badge,
+bottom readability gradient, project metadata, technology chips, and a clear
+CTA.
+
+On smaller screens the technology list may become a horizontal marquee. It
+must stop when `prefers-reduced-motion: reduce` is active.
+
+The Hero image is the likely LCP element. It must retain responsive sources,
+intrinsic dimensions, eager loading, preload support, and high fetch priority.
+
+## Portfolio
+
+The current Portfolio section is a dark rounded panel with:
+
+- Section label, heading, and short description.
+- Equal responsive project cards.
+- One column on mobile, two on tablet, and three on desktop.
+- Consistent `16 / 9` project media.
+- Optional project badge, date, title, and description.
+
+All active cards use the same grid footprint. Do not document or implement a
+larger featured grid item unless that hierarchy is intentionally introduced.
+
+Linked projects open as links and receive interactive hover behavior. Projects
+without a URL remain static articles and must not look or behave clickable.
+
+## About
+
+The About section is a dark rounded panel containing:
+
+- `/About (02)` marker and `Behind the scenes.` tagline.
+- A large responsive personal photograph.
+- A quotation-style heading and biography copy.
+- A photo carousel beneath the main content.
+
+The main image is decorative in the current composition and uses an empty
+alternative text. Carousel images carry meaningful alternative text because
+they are individual content items.
+
+## Photo Carousel
+
+The current carousel uses responsive `16 / 9` frames rather than a fixed-height
+single-image viewport.
+
+- Mobile shows one frame.
+- Tablet and larger screens show three frames.
+- Controls are pill-shaped `Prev` and `Next` buttons.
+- The center status displays the active title and current position.
+- Dot buttons allow direct selection; the active dot expands horizontally.
+- An optional `OPEN LINK` pill sits over the active image.
+- Track movement uses a restrained transition of approximately `520ms`.
+
+Carousel controls require accessible names, visible keyboard focus, and a
+polite live status. Do not replace them with unlabeled icon-only controls.
+
+## Footer
+
+The current Footer is a dark rounded panel with:
+
+- Brand title and direct phone/email links.
+- `Menu` and `Social Media` navigation groups.
+- Right-aligned navigation groups on desktop.
+- Copyright and a cultural signature separated by a subtle top border.
+
+On mobile the layout stacks naturally. On desktop, the brand/contact area stays
+left while the navigation groups occupy the right side.
+
+There is no active newsletter UI. Remove dormant newsletter styling when
+cleaning the component, or add the feature only with a real submission flow,
+labels, validation, and accessible feedback.
+
+## Imagery
+
+Photography and project screenshots carry the design. Browser-delivered assets
+must come from `src/assets/optimized-img`.
+
+For every content image:
+
+- Declare intrinsic `width` and `height`.
+- Supply WebP responsive variants using `srcSet`.
+- Provide an accurate `sizes` expression.
+- Use descriptive alternative text unless the image is genuinely decorative.
+- Keep `object-fit: cover` and the component's intended aspect ratio.
+
+The Hero/LCP image loads eagerly. Portfolio, About, and carousel imagery below
+the fold load lazily and decode asynchronously.
+
+Large master files are source assets, not browser delivery assets. Regenerate
+responsive variants with:
+
+```bash
+npm run optimize:images
 ```
 
-## Components
+## Ambient Background and Effects
 
-Cards, buttons, badges, navigation, and repeated blocks should preserve the same geometry, border treatment, and hover feel as the inspected HTML, but they must be implemented with Emotion components.
+The current visual presentation includes an animated ambient gradient behind
+the content. The effect is supporting atmosphere, not primary content.
 
-### Page Shell
+The visual requirements are:
 
-The page shell should set the global font, background, antialiasing, and text color.
+- Keep it behind all interactive and readable content.
+- Preserve sufficient contrast around panel boundaries.
+- Mark it as decorative and keep it outside the accessibility tree.
+- Ensure the portfolio remains complete if the effect fails to load.
+- Avoid using the effect to communicate information.
 
-```ts
-export const PageShell = styled.div(({ theme }) => ({
-  minHeight: "100vh",
-  fontFamily: theme.fonts.sans,
-  color: theme.colors.textPrimary,
-  background: theme.colors.background,
-  WebkitFontSmoothing: "antialiased",
-  MozOsxFontSmoothing: "grayscale",
-}));
-```
-
-### Section
-
-Sections should feel like large rounded editorial panels.
-
-```ts
-export const Section = styled.section<{ variant?: "light" | "dark" }>(
-  ({ theme, variant = "light" }) => ({
-    marginTop: theme.spacing.xl,
-    padding: theme.spacing.lg,
-    borderRadius: theme.radii.section,
-    background:
-      variant === "dark" ? theme.colors.surfaceDark : theme.colors.surface,
-    color:
-      variant === "dark" ? theme.colors.textInverse : theme.colors.textPrimary,
-  }),
-);
-```
-
-### Navigation
-
-Navigation should be compact, sticky, dark, rounded, and calm. Links use muted inverse text by default and become white on hover.
-
-```ts
-export const NavBar = styled.header(({ theme }) => ({
-  position: "sticky",
-  top: 0,
-  zIndex: 40,
-  paddingTop: theme.spacing.sm,
-}));
-
-export const NavInner = styled.div(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: `${theme.spacing.md} ${theme.spacing.xl}`,
-  borderRadius: theme.radii.section,
-  background: theme.colors.surfaceDark,
-}));
-```
-
-### Hero Title
-
-The hero title should be oversized and editorial. Use `clamp()` to avoid manual breakpoint-heavy sizing.
-
-```ts
-export const HeroTitle = styled.h1(({ theme }) => ({
-  margin: 0,
-  padding: `${theme.spacing.xl} 0`,
-  fontFamily: theme.fonts.sans,
-  fontSize: "clamp(4rem, 12vw, 9rem)",
-  fontWeight: 300,
-  lineHeight: 0.9,
-  letterSpacing: "-0.06em",
-}));
-```
-
-### Project Card
-
-Project cards are image-first. The outer card uses a subtle border and rounded container, while the image area has a slightly smaller radius.
-
-```ts
-export const ProjectCard = styled.article(({ theme }) => ({
-  padding: theme.spacing.xs,
-  borderRadius: theme.radii.card,
-  border: `0.0625rem solid ${theme.colors.border}`,
-  background: theme.colors.surfaceMuted,
-  boxShadow: theme.shadows.card,
-}));
-
-export const ProjectMedia = styled.div(({ theme }) => ({
-  position: "relative",
-  overflow: "hidden",
-  borderRadius: theme.radii.media,
-  img: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-    display: "block",
-  },
-}));
-```
-
-### Button
-
-Buttons should be simple, rounded, and clear. Avoid heavy shadows or colorful gradients.
-
-```ts
-export const Button = styled.button<{
-  variant?: "primary" | "secondary" | "ghost";
-}>(({ theme, variant = "primary" }) => ({
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: theme.spacing.sm,
-  border: 0,
-  cursor: "pointer",
-  borderRadius: theme.radii.control,
-  padding: `${theme.spacing.md} ${theme.spacing.lg}`,
-  fontSize: "0.875rem",
-  fontWeight: 500,
-  transition: `background ${theme.transitions.base}, color ${theme.transitions.base}, border-color ${theme.transitions.base}`,
-  ...(variant === "primary" && {
-    background: theme.colors.primary,
-    color: theme.colors.textInverse,
-  }),
-  ...(variant === "secondary" && {
-    background: theme.colors.surfaceMuted,
-    color: theme.colors.textPrimary,
-    border: `0.0625rem solid ${theme.colors.border}`,
-  }),
-  ...(variant === "ghost" && {
-    background: "transparent",
-    color: theme.colors.textPrimary,
-  }),
-  "&:hover": {
-    filter: "brightness(0.96)",
-  },
-}));
-```
-
-### Badge
-
-Badges should appear as small rounded labels, often placed above images.
-
-```ts
-export const Badge = styled.span(({ theme }) => ({
-  display: "inline-flex",
-  alignItems: "center",
-  borderRadius: theme.radii.pill,
-  padding: "0.25rem 0.75rem",
-  fontSize: "0.75rem",
-  fontWeight: 500,
-  color: theme.colors.textPrimary,
-  background: theme.colors.overlayLight,
-  backdropFilter: "blur(0.5rem)",
-}));
-```
-
-### Pricing Card
-
-Pricing cards should remain clean and structured. Use a dark strip for price or duration information to match the visual language.
-
-```ts
-export const PricingStrip = styled.div(({ theme }) => ({
-  display: "flex",
-  overflow: "hidden",
-  borderRadius: theme.radii.control,
-  background: theme.colors.surfaceDark,
-  color: theme.colors.textInverse,
-  "> *": {
-    flex: 1,
-    padding: `${theme.spacing.md} ${theme.spacing.sm}`,
-    textAlign: "center",
-  },
-  "> * + *": {
-    borderLeft: `0.0625rem solid ${theme.colors.borderDark}`,
-  },
-}));
-```
+The current implementation uses an isolated `AmbientBackground` component.
+That implementation detail is not a requirement of the visual identity. Follow
+the Lighthouse guardrails in `AGENTS.md`: prefer a CSS-native equivalent and do
+not add or restore a heavy third-party runtime without measuring its network,
+main-thread, privacy, and Best Practices impact.
 
 ## Motion
 
-Motion should be calm and restrained. Use short transitions for hover and slightly longer transitions for carousel fade or image reveal.
+Motion is restrained and functional:
 
-Recommended motion behavior:
+- Base hover transitions: approximately `180ms ease`.
+- Carousel movement: approximately `500ms ease-out`.
+- Card hover: a small upward translation and shadow change only for linked
+  cards.
+- Mobile technology marquee: continuous but disabled for reduced motion.
 
-- Carousel fade: `500ms ease-out`.
-- Button hover: `180ms ease`.
-- Card hover: optional subtle brightness change or tiny translate, not a dramatic lift.
-- Image overlays: fade in/out with opacity.
-- Decorative images: keep static unless there is a clear reason for motion.
+Do not add excessive parallax, bouncing, autoplay video, or decorative motion
+that competes with the work.
 
-Avoid excessive parallax, bouncing animations, or colorful animated gradients. This design should feel quiet and premium.
+## Emotion Implementation Pattern
 
-## WebGL & Effects
+Each component follows the repository conventions in `AGENTS.md`:
 
-If the source includes canvas, WebGL, Unicorn Studio, Three.js, gradients, particles, or atmospheric background effects, rebuild them only as subtle supporting layers behind the content.
+- One Emotion `css` prop on the component root.
+- One scoped `css` template exported from `styles.ts`.
+- Plain kebab-case class names for descendants.
+- BEM-style `--modifier` classes for variants and state.
+- No inline `style` props.
+- Prefer nested selectors under their owning UI block.
+- Avoid grouped selectors with commas.
 
-Guidelines:
+Example:
 
-- Effects must never reduce text readability.
-- Effects should sit behind the page content with negative z-index or isolated background wrappers.
-- Keep effects optional so the portfolio still works without them.
-- Prefer static gradients or lightweight CSS effects before adding WebGL.
-- Respect performance on mobile devices.
+```tsx
+const ProjectSection = () => (
+  <section css={projectSectionCx}>
+    <div className="project-section-inner">
+      <h2 className="project-section-heading">Latest work</h2>
+    </div>
+  </section>
+);
+```
 
-When using Emotion, isolate visual effects into a dedicated component such as `AmbientBackground` rather than mixing effect styles into content components.
+```ts
+export const projectSectionCx = css`
+  padding: 1.5rem 1rem;
+
+  .project-section-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    border-radius: 1.5rem;
+    background: #171717;
+  }
+
+  .project-section-heading {
+    color: #ffffff;
+  }
+`;
+```
+
+Use semantic tokens from `src/styles/tokens.ts` instead of duplicating values
+when a matching token exists.
 
 ## Accessibility
 
-Keep the design visually minimal but still accessible.
+Visual changes must preserve or improve:
 
-- Use real headings in semantic order.
-- Provide meaningful `alt` text for every portfolio image.
-- Buttons and carousel controls must have accessible labels.
-- Maintain sufficient contrast for muted text.
-- Avoid using opacity-only text when contrast becomes too low.
-- Ensure keyboard focus styles are visible.
-- Do not hide critical navigation behind hover-only interactions.
+- Semantic landmarks and heading order.
+- Meaningful image alternatives.
+- Accessible names for controls and external links.
+- Visible keyboard focus.
+- Minimum practical target sizes.
+- Sufficient text and control contrast.
+- `prefers-reduced-motion` handling.
+- Indexable text and navigation.
 
-Recommended focus style:
+Do not remove semantics or accessible labels to improve a Lighthouse
+Performance score. Accessibility, Best Practices, and SEO are constraints of
+the design system, not optional cleanup.
 
-```ts
-export const focusRing = (theme: Theme) => ({
-  outline: `0.125rem solid ${theme.colors.primary}`,
-  outlineOffset: "0.1875rem",
-});
-```
+## Performance Constraints
 
-## Guardrails
+The design is only considered correctly implemented when it remains fast and
+layout-stable.
 
-- Do not use Tailwind utility classes in implementation.
-- Do not use `px` for CSS length values; use `rem` consistently with `1rem` as the base unit.
-- Do not name the system after the inspected template or a specific person.
-- Keep the guideline general for a portfolio website.
-- Preserve the image-first editorial rhythm from the source HTML.
-- Do not replace the first viewport with a generic SaaS hero.
-- Do not overuse accent colors; keep the design neutral and premium.
-- Do not make every card identical; keep one or two featured cards larger for hierarchy.
-- Keep section backgrounds, card backgrounds, borders, and dark panels semantically distinct.
-- Keep large headings thin, tight, and editorial.
-- Use Emotion tokens and reusable styled components instead of duplicated inline styles.
-- Keep motion subtle and performance-friendly.
+- Keep Hero, Portfolio, and About in the initial component tree unless a
+  layout-stable fallback is provided.
+- Never lazy-load the Hero/LCP image.
+- Lazy-load below-the-fold imagery.
+- Preserve responsive image variants and correct `sizes`.
+- Keep the self-hosted Inter font.
+- Avoid new render-blocking external stylesheets.
+- Prefer CSS-native decorative effects.
+- Do not add heavy third-party visual runtimes without measurement.
+- Preserve the Emotion build configuration and visually inspect production
+  output after relevant changes.
+
+The detailed Lighthouse regression and verification rules live in `AGENTS.md`
+and must be followed together with this document.
+
+## Design Guardrails
+
+- Preserve the dark-panel-led identity.
+- Preserve the bold Hero title.
+- Keep the palette neutral and monochrome.
+- Keep the page image-led.
+- Maintain rounded section and card geometry.
+- Keep portfolio cards equal unless a new hierarchy is deliberately designed.
+- Keep linked and static cards visually and semantically distinct.
+- Do not present dormant Testimonials or Services as active content.
+- Do not add a newsletter as decorative UI without a working flow.
+- Use `rem` for CSS length units.
+- Use Emotion and repository scoping conventions.
+- Keep motion subtle and reduced-motion aware.
+- Treat Lighthouse accessibility, SEO, Best Practices, and Performance as
+  non-negotiable constraints.
